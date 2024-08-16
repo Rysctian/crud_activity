@@ -23,6 +23,7 @@ $route['image_upload'] = 'PageController/image_upload';
 // admin
 
 $route['admin_dashboard'] = 'AdminController/index';
+$route['employees'] = 'AdminController/employee_view';
 
 
  

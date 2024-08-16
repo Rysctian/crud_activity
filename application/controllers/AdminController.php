@@ -5,14 +5,25 @@ class AdminController extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        // Ensure the user is logged in and has admin role
+        $this->load->model('EmployeeModel');
         if ($this->session->userdata('role_id') != 1) {
             redirect('login');
         }
     }
 
     public function index() {
-        // Load the admin dashboard view
-        $this->load->view('dashboard_view');
+        $this->load->view('admin/dashboard_view');
     }
+    public function employee_view() {
+        $this->load->view('admin/employee_view');
+    }
+
+
+    public function all_employees()
+    {
+        $employees = $this->EmployeeModel->get_all_employee();
+
+        redirect("employee_view", ["employees" => $employees]);
+    }
+
 }

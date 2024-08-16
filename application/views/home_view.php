@@ -8,6 +8,7 @@
     <div id="page-content-wrapper">
         <div class="container-fluid">
         <h1 class="mt-4">Dashboard <?=($username); ?></h1>
+        <h1 class="mt-4">Dashboard <?= $username === 1 ? "admin" : "employee"; ?></h1>
             
             <?php if ($this->session->flashdata('success')): ?>
                 <div class="alert alert-success">

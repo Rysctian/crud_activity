@@ -75,7 +75,7 @@ class AuthController extends CI_Controller {
                     ]);
     
                     $this->session->set_flashdata('success', 'Login Successful!');
-                    if ($user->role_id === 1) {
+                    if ($user->role_id === "1") {
                         redirect('admin_dashboard');
                     } else {
                         redirect('home');
