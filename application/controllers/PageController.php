@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+
 class PageController extends CI_Controller
 {
     public function __construct()
@@ -11,7 +12,7 @@ class PageController extends CI_Controller
 
     private function check_authentication()
     {
-        if (!$this->session->userdata('logged_in')) {
+        if (!$this->session->userdata('user_id')) {
             redirect('login');
         }
     }
@@ -23,26 +24,31 @@ class PageController extends CI_Controller
         $data['firstname'] = $this->session->userdata('firstname');
         $data['role_id'] = $this->session->userdata('role_id');
 
-        var_dump($data);
-
         $this->load->view("home_view", $data);
     }
 
  
-
+ 
+   
     public function profile()
     {
-        $user_id = $this->session->userdata('user_id');
+    //    $data = [
+    //         'user_id'=> $this->session->userdata('user_id'),
+    //         'firstname' => $this->session->userdata('firstname'),
+    //         'lastname' => $this->session->userdata('lastname'),
+    //         'username' => $this->session->userdata('username'),
+    //         'email' => $this->session->userdata('email'),
+    //    ];
+
+       $user_id = $this->session->userdata('user_id');
+       $this->load->model('ProfileModel');
+       
+       $user_data = $this->ProfileModel->getUserProfile($user_id);
         $this->check_authentication();
-        $this->load->view("profile_view.php");
+        $this->load->view("profile_view.php", ['data'=> $user_data]);
     }
   
-    public function image_upload()
-    {
-        $this->check_authentication();
-        
-        $this->load->view("image_upload.php");
-    }
+
 
     
 }

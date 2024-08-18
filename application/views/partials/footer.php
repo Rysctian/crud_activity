@@ -1,6 +1,26 @@
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const successMessage = "<?php echo $this->session->flashdata('success'); ?>";
+      const errorMessage = "<?php echo $this->session->flashdata('error'); ?>";
+      const toastBody = document.querySelector('#statusToast .toast-body');
+      const toast = new bootstrap.Toast(document.getElementById('statusToast'), { delay: 3000 });
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
-</body>  
+      if (successMessage) {
+        toastBody.textContent = successMessage;
+        toastBody.classList.remove('text-danger');
+        toastBody.classList.add('text-success');
+        toast.show();
+      } else if (errorMessage) {
+        toastBody.textContent = errorMessage;
+        toastBody.classList.remove('text-success');
+        toastBody.classList.add('text-danger');
+        toast.show();
+      }
+    });
+
+    $(document).ready(function() {
+      $('#employeesTable').DataTable();
+    });
+  </script>
+</body>
 </html>

@@ -5,6 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'MainController';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+$route['unauthorized'] = 'AdminController/unauthorized';
 
 
 
@@ -17,13 +18,21 @@ $route['logout'] = 'AuthController/logout';
 // pages
 $route['home'] = 'PageController/home'; 
 $route['profile'] = 'PageController/profile';
-$route['image_upload'] = 'PageController/image_upload';
 
 
 // admin
+$route['admin_dashboard'] = 'AdminController/index'; 
 
-$route['admin_dashboard'] = 'AdminController/index';
-$route['employees'] = 'AdminController/employee_view';
+// admin/schedule
+$route['set_schedule'] = 'ScheduleController/index';
+
+// employees
+$route['employees'] = 'EmployeeController/index';
+$route['employee_log'] = 'TimeLogController/index';
+
+
+// schedule
+$route['schedule'] = 'ScheduleController/index';
 
 
  

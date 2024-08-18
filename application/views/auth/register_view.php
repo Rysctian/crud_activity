@@ -58,12 +58,7 @@
                         <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
                     </form>
 
-                    <?php if ($this->session->flashdata('success')): ?>
-                        <div class="alert alert-success mt-3">
-                            <?php echo $this->session->flashdata('success'); ?>
-                        </div>
-                    <?php endif; ?>
-
+                    
                     <div class="text-center mt-3">
                         <a href="<?php echo site_url('login'); ?>">Already have an account? Login here</a>
                     </div>
